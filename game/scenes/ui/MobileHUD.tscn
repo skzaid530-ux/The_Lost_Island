@@ -92,3 +92,13 @@ mouse_filter = 2
 theme_override_styles/normal = SubResource("ButtonStyle")
 theme_override_styles/pressed = SubResource("ButtonPressedStyle")
 text = "RUN"
+
+[node name="InteractButton" type="Button" parent="Controls"]
+offset_left = 1080.0
+offset_top = 375.0
+offset_right = 1190.0
+offset_bottom = 485.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("ButtonStyle")
+theme_override_styles/pressed = SubResource("ButtonPressedStyle")
+text = "INTERACT"

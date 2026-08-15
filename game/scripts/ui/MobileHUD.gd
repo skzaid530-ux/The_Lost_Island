@@ -15,7 +15,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		_handle_touch(event)
-
 	elif event is InputEventScreenDrag:
 		_handle_drag(event)
 
@@ -26,13 +25,12 @@ func _handle_touch(event: InputEventScreenTouch) -> void:
 		if joystick_touch_id == -1 and joystick_base.get_global_rect().has_point(position):
 			joystick_touch_id = event.index
 			_update_joystick(position)
-
 		elif _is_jump_button(position):
 			MobileInput.request_jump()
-
+		elif _is_interact_button(position):
+			MobileInput.request_interact()
 		elif _is_sprint_button(position):
 			MobileInput.set_sprint(true)
-
 	else:
 		if event.index == joystick_touch_id:
 			joystick_touch_id = -1
@@ -73,4 +71,8 @@ func _is_jump_button(position: Vector2) -> bool:
 
 func _is_sprint_button(position: Vector2) -> bool:
 	var button: Control = $Controls/SprintButton
+	return button.get_global_rect().has_point(position)
+
+func _is_interact_button(position: Vector2) -> bool:
+	var button: Control = $Controls/InteractButton
 	return button.get_global_rect().has_point(position)
