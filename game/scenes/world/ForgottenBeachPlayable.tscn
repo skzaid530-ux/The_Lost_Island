@@ -7,6 +7,7 @@
 [ext_resource path="res://game/scenes/world/EnvironmentLighting.tscn" type="PackedScene" id="5"]
 [ext_resource path="res://game/scenes/world/BeachVegetation.tscn" type="PackedScene" id="6"]
 [ext_resource path="res://game/scenes/player/Kael.tscn" type="PackedScene" id="7"]
+[ext_resource path="res://game/scenes/ui/MobileHUD.tscn" type="PackedScene" id="8"]
 
 [node name="ForgottenBeachPlayable" type="Node3D"]
 script = ExtResource("1")
@@ -26,3 +27,5 @@ position = Vector3(0, 0.2, 4)
 
 [node name="SpawnMarker" type="Marker3D" parent="."]
 position = Vector3(0, 0.2, 4)
+
+[node name="MobileHUD" parent="." instance=ExtResource("8")]
