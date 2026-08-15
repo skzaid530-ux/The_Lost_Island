@@ -20,12 +20,17 @@ var gravity: float = ProjectSettings.get_setting(
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera3D
+@onready var visual_feedback: KaelVisualFeedback = KaelVisualFeedback.new()
 
 var animation_state: KaelAnimationState
 
 
 func _ready() -> void:
         camera.current = true
+
+        visual_feedback.name = "KaelVisualFeedback"
+        add_child(visual_feedback)
+
         animation_state = KaelAnimationState.new()
         add_child(animation_state)
 
@@ -117,4 +122,10 @@ func _handle_movement(delta: float) -> void:
                 horizontal_velocity.length(),
                 InputManager.is_sprinting(),
                 velocity.y
+        )
+
+        visual_feedback.update_visuals(
+                delta,
+                horizontal_velocity.length(),
+                is_on_floor()
         )
