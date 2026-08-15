@@ -9,6 +9,11 @@ config/name="The Lost Island"
 run/main_scene="res://game/scenes/Main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+
+[autoload]
+
+InteractionEventBus="*res://game/scripts/events/InteractionEventBus.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -52,4 +57,9 @@ move_backward={
 jump={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"physical_keycode":32)]
+}
+
+interact={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":69)]
 }

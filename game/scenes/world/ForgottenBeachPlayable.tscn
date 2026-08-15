@@ -8,6 +8,20 @@
 [ext_resource path="res://game/scenes/world/BeachVegetation.tscn" type="PackedScene" id="6"]
 [ext_resource path="res://game/scenes/player/Kael.tscn" type="PackedScene" id="7"]
 [ext_resource path="res://game/scenes/ui/MobileHUD.tscn" type="PackedScene" id="8"]
+[ext_resource path="res://game/scripts/interaction/BeachInteractable.gd" type="Script" id="9"]
+
+
+
+[sub_resource type="SphereMesh" id="DiscoveryStoneMesh"]
+radius = 0.55
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="DiscoveryStoneMaterial"]
+albedo_color = Color(0.22, 0.24, 0.23, 1)
+roughness = 0.92
+
+[sub_resource type="SphereShape3D" id="DiscoveryStoneShape"]
+radius = 0.58
 
 [node name="ForgottenBeachPlayable" type="Node3D"]
 script = ExtResource("1")
@@ -29,3 +43,20 @@ position = Vector3(0, 0.2, 4)
 position = Vector3(0, 0.2, 4)
 
 [node name="MobileHUD" parent="." instance=ExtResource("8")]
+
+[node name="BeachDiscoveryStone" type="StaticBody3D" parent="."]
+position = Vector3(1.5, 0.55, 2.2)
+
+[node name="Mesh" type="MeshInstance3D" parent="BeachDiscoveryStone"]
+mesh = SubResource("DiscoveryStoneMesh")
+material_override = SubResource("DiscoveryStoneMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="BeachDiscoveryStone"]
+shape = SubResource("DiscoveryStoneShape")
+
+[node name="Interaction" type="Node3D" parent="BeachDiscoveryStone"]
+script = ExtResource("9")
+interaction_name = "Inspect the strange stone"
+interaction_range = 3.0
+interaction_message = "The stone is covered in strange markings. Someone was here before Kael."
+discovery_id = "forgotten_beach_strange_stone"
