@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource path="res://game/scripts/world/WaterAtmosphere.gd" type="Script" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="WaterMaterial"]
+albedo_color = Color(0.025, 0.24, 0.42, 0.86)
+metallic = 0.12
+roughness = 0.12
+transparency = 1
+cull_mode = 2
+
+[sub_resource type="PlaneMesh" id="WaterMesh"]
+size = Vector2(45, 18)
+subdivide_width = 8
+subdivide_depth = 4
+
+[sub_resource type="StandardMaterial3D" id="FoamMaterial"]
+albedo_color = Color(0.82, 0.88, 0.84, 0.72)
+roughness = 0.25
+transparency = 1
+
+[sub_resource type="PlaneMesh" id="FoamMesh"]
+size = Vector2(45, 1.2)
+
+[node name="WaterAtmosphere" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Ocean" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -15)
+mesh = SubResource("WaterMesh")
+material_override = SubResource("WaterMaterial")
+
+[node name="ShoreFoam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.025, -7.9)
+mesh = SubResource("FoamMesh")
+material_override = SubResource("FoamMaterial")
