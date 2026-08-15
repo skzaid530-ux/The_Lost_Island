@@ -9,6 +9,7 @@
 [ext_resource path="res://game/scenes/player/Kael.tscn" type="PackedScene" id="7"]
 [ext_resource path="res://game/scenes/ui/MobileHUD.tscn" type="PackedScene" id="8"]
 [ext_resource path="res://game/scripts/interaction/BeachInteractable.gd" type="Script" id="9"]
+[ext_resource path="res://game/scripts/interaction/DiscoveryFeedback.gd" type="Script" id="10"]
 
 
 
@@ -89,3 +90,6 @@ interaction_range = 3.0
 interaction_message = "The wreckage is fresh. A torn piece of cloth is caught beneath the broken wood."
 discovery_id = "forgotten_beach_wreckage"
 
+
+[node name="DiscoveryFeedback" type="CanvasLayer" parent="."]
+script = ExtResource("10")

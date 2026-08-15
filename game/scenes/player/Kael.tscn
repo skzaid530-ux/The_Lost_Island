@@ -2,6 +2,7 @@
 
 [ext_resource path="res://game/scripts/player/Kael.gd" type="Script" id="1"]
 [ext_resource path="res://game/scripts/player/ThirdPersonCamera.gd" type="Script" id="2"]
+[ext_resource path="res://game/scripts/player/KaelInteraction.gd" type="Script" id="3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape"]
 radius = 0.45
@@ -35,6 +36,9 @@ script = ExtResource("2")
 position = Vector3(0, 0, 5.5)
 rotation_degrees = Vector3(0, 0, 0)
 current = true
+
+[node name="KaelInteraction" type="Node" parent="."]
+script = ExtResource("3")
 
 [node name="GroundRay" type="RayCast3D" parent="."]
 position = Vector3(0, 0.9, 0)
