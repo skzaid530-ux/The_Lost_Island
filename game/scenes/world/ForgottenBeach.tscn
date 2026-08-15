@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource path="res://game/scripts/world/ForgottenBeach.gd" type="Script" id="1"]
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 1
+background_color = Color(0.38, 0.62, 0.78, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.72, 0.80, 0.88, 1)
+ambient_light_energy = 0.55
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="SandMesh"]
+size = Vector3(45, 0.35, 45)
+
+[sub_resource type="StandardMaterial3D" id="SandMaterial"]
+albedo_color = Color(0.58, 0.47, 0.32, 1)
+roughness = 0.96
+
+[sub_resource type="BoxShape3D" id="SandCollision"]
+size = Vector3(45, 0.35, 45)
+
+[sub_resource type="PlaneMesh" id="WaterMesh"]
+size = Vector2(45, 14)
+
+[sub_resource type="StandardMaterial3D" id="WaterMaterial"]
+albedo_color = Color(0.025, 0.22, 0.38, 1)
+metallic = 0.08
+roughness = 0.18
+
+[sub_resource type="SphereMesh" id="RockMesh"]
+radius = 0.7
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="RockMaterial"]
+albedo_color = Color(0.18, 0.19, 0.18, 1)
+roughness = 0.98
+
+[node name="ForgottenBeach" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -32, 0)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 80.0
+
+[node name="Sand" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Sand"]
+position = Vector3(0, -0.175, 0)
+mesh = SubResource("SandMesh")
+material_override = SubResource("SandMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="Sand"]
+position = Vector3(0, -0.175, 0)
+shape = SubResource("SandCollision")
+
+[node name="Ocean" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -15)
+mesh = SubResource("WaterMesh")
+material_override = SubResource("WaterMaterial")
+
+[node name="Rock01" type="MeshInstance3D" parent="."]
+position = Vector3(-7, 0.35, -5)
+scale = Vector3(1.5, 0.75, 1.2)
+mesh = SubResource("RockMesh")
+material_override = SubResource("RockMaterial")
+
+[node name="Rock02" type="MeshInstance3D" parent="."]
+position = Vector3(8, 0.4, -8)
+scale = Vector3(1.2, 0.65, 1.5)
+mesh = SubResource("RockMesh")
+material_override = SubResource("RockMaterial")
+
+[node name="Rock03" type="MeshInstance3D" parent="."]
+position = Vector3(-10, 0.3, 5)
+scale = Vector3(0.8, 0.55, 1.1)
+mesh = SubResource("RockMesh")
+material_override = SubResource("RockMaterial")

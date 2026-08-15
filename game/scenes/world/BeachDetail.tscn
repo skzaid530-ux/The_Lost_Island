@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource path="res://game/scripts/world/BeachDetail.gd" type="Script" id="1"]
+
+[sub_resource type="CylinderMesh" id="Trunk"]
+top_radius = 0.14
+bottom_radius = 0.24
+height = 2.8
+
+[sub_resource type="StandardMaterial3D" id="TrunkMat"]
+albedo_color = Color(0.22, 0.11, 0.045, 1)
+roughness = 0.98
+
+[sub_resource type="SphereMesh" id="Crown"]
+radius = 1.35
+height = 2.5
+
+[sub_resource type="StandardMaterial3D" id="LeafMat"]
+albedo_color = Color(0.045, 0.20, 0.065, 1)
+roughness = 0.92
+
+[sub_resource type="SphereMesh" id="SmallRock"]
+radius = 0.45
+height = 0.65
+
+[sub_resource type="StandardMaterial3D" id="RockMat"]
+albedo_color = Color(0.20, 0.21, 0.20, 1)
+roughness = 1.0
+
+[sub_resource type="PlaneMesh" id="Shoreline"]
+size = Vector2(45, 3)
+
+[sub_resource type="StandardMaterial3D" id="ShoreMat"]
+albedo_color = Color(0.76, 0.67, 0.48, 1)
+roughness = 1.0
+
+[node name="BeachDetail" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Shoreline" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.015, -8.5)
+mesh = SubResource("Shoreline")
+material_override = SubResource("ShoreMat")
+
+[node name="Palm01" type="Node3D" parent="."]
+position = Vector3(-13, 0, 5)
+rotation_degrees = Vector3(0, 15, -4)
+
+[node name="Trunk" type="MeshInstance3D" parent="Palm01"]
+position = Vector3(0, 1.4, 0)
+mesh = SubResource("Trunk")
+material_override = SubResource("TrunkMat")
+
+[node name="Crown" type="MeshInstance3D" parent="Palm01"]
+position = Vector3(0, 3.0, 0)
+scale = Vector3(1.3, 0.65, 1.3)
+mesh = SubResource("Crown")
+material_override = SubResource("LeafMat")
+
+[node name="Palm02" type="Node3D" parent="."]
+position = Vector3(13, 0, 4)
+rotation_degrees = Vector3(0, -20, 5)
+
+[node name="Trunk" type="MeshInstance3D" parent="Palm02"]
+position = Vector3(0, 1.4, 0)
+mesh = SubResource("Trunk")
+material_override = SubResource("TrunkMat")
+
+[node name="Crown" type="MeshInstance3D" parent="Palm02"]
+position = Vector3(0, 3.0, 0)
+scale = Vector3(1.3, 0.65, 1.3)
+mesh = SubResource("Crown")
+material_override = SubResource("LeafMat")
+
+[node name="Palm03" type="Node3D" parent="."]
+position = Vector3(-16, 0, -1)
+rotation_degrees = Vector3(0, 30, -6)
+
+[node name="Trunk" type="MeshInstance3D" parent="Palm03"]
+position = Vector3(0, 1.4, 0)
+mesh = SubResource("Trunk")
+material_override = SubResource("TrunkMat")
+
+[node name="Crown" type="MeshInstance3D" parent="Palm03"]
+position = Vector3(0, 3.0, 0)
+scale = Vector3(1.3, 0.65, 1.3)
+mesh = SubResource("Crown")
+material_override = SubResource("LeafMat")
+
+[node name="Rock01" type="MeshInstance3D" parent="."]
+position = Vector3(-12, 0.3, -4)
+scale = Vector3(1.5, 0.8, 1.2)
+mesh = SubResource("SmallRock")
+material_override = SubResource("RockMat")
+
+[node name="Rock02" type="MeshInstance3D" parent="."]
+position = Vector3(11, 0.25, -3)
+scale = Vector3(1.7, 0.7, 1.0)
+mesh = SubResource("SmallRock")
+material_override = SubResource("RockMat")
+
+[node name="Rock03" type="MeshInstance3D" parent="."]
+position = Vector3(-5, 0.2, -6)
+scale = Vector3(0.8, 0.5, 1.4)
+mesh = SubResource("SmallRock")
+material_override = SubResource("RockMat")
+
+[node name="Rock04" type="MeshInstance3D" parent="."]
+position = Vector3(6, 0.22, -5)
+scale = Vector3(1.1, 0.55, 0.8)
+mesh = SubResource("SmallRock")
+material_override = SubResource("RockMat")
