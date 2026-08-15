@@ -13,6 +13,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 [autoload]
 
 InteractionEventBus="*res://game/scripts/events/InteractionEventBus.gd"
+ObjectiveManager="*res://game/scripts/events/ObjectiveManager.gd"
 
 [display]
 
