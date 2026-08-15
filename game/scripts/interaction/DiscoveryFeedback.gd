@@ -5,6 +5,9 @@ var label: Label
 
 
 func _ready() -> void:
+    var event_bus := get_node_or_null("/root/InteractionEventBus")
+    if event_bus:
+        event_bus.register_feedback(self)
     label = Label.new()
     label.name = "DiscoveryLabel"
     label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

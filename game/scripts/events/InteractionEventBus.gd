@@ -57,5 +57,11 @@ func _get_discovery_message(discovery_id: String) -> String:
     match discovery_id:
         "forgotten_beach_strange_stone":
             return "The markings are unfamiliar. Someone was here before Kael."
+        "forgotten_beach_wreckage":
+            return "The wreckage is fresh. A torn piece of cloth suggests someone may still be nearby."
         _:
             return "Something about this place feels strangely familiar."
+
+
+func register_feedback(feedback: Node) -> void:
+    _feedback = feedback
