@@ -21,8 +21,13 @@ var gravity: float = ProjectSettings.get_setting(
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 
+var animation_state: KaelAnimationState
+
+
 func _ready() -> void:
         camera.current = true
+        animation_state = KaelAnimationState.new()
+        add_child(animation_state)
 
 func _physics_process(delta: float) -> void:
         _apply_gravity(delta)
@@ -106,3 +111,10 @@ func _handle_movement(delta: float) -> void:
 
         velocity.x = horizontal_velocity.x
         velocity.z = horizontal_velocity.z
+
+        animation_state.update_state(
+                is_on_floor(),
+                horizontal_velocity.length(),
+                InputManager.is_sprinting(),
+                velocity.y
+        )
