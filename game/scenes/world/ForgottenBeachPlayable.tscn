@@ -11,6 +11,7 @@
 [ext_resource path="res://game/scripts/interaction/BeachInteractable.gd" type="Script" id="9"]
 [ext_resource path="res://game/scripts/interaction/DiscoveryFeedback.gd" type="Script" id="10"]
 [ext_resource path="res://game/scripts/ui/ObjectiveHUD.gd" type="Script" id="11"]
+[ext_resource path="res://game/scripts/ui/StoryDialogue.gd" type="Script" id="12"]
 
 
 
@@ -97,3 +98,6 @@ script = ExtResource("10")
 
 [node name="ObjectiveHUD" type="CanvasLayer" parent="."]
 script = ExtResource("11")
+
+[node name="StoryDialogue" type="CanvasLayer" parent="."]
+script = ExtResource("12")

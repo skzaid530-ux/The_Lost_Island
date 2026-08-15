@@ -12,6 +12,7 @@ var _completed: Dictionary = {}
 
 func _ready() -> void:
 	var event_bus := get_node_or_null("/root/InteractionEventBus")
+
 	if event_bus:
 		event_bus.discovery_triggered.connect(_on_discovery_triggered)
 
@@ -70,11 +71,14 @@ func _on_discovery_triggered(
 	if current_objective_id != "explore_forgotten_beach":
 		return
 
-	if discovery_id != "forgotten_beach_strange_stone" \
-	and discovery_id != "forgotten_beach_wreckage":
+	if (
+		discovery_id != "forgotten_beach_strange_stone"
+		and discovery_id != "forgotten_beach_wreckage"
+	):
 		return
 
 	var event_bus := get_node_or_null("/root/InteractionEventBus")
+
 	if event_bus == null:
 		return
 

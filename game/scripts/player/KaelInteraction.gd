@@ -22,6 +22,17 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+    var story_manager := get_node_or_null("/root/StoryManager")
+
+    if story_manager and story_manager.has_method("is_busy"):
+        if story_manager.is_busy():
+            current_target = null
+
+            if is_instance_valid(prompt):
+                prompt.hide_prompt()
+
+            return
+
     _update_target()
 
     if InputManager.consume_interact():

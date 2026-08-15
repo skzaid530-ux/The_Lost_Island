@@ -24,8 +24,11 @@ var gravity: float = ProjectSettings.get_setting(
 
 var animation_state: KaelAnimationState
 
+var movement_enabled: bool = true
+
 
 func _ready() -> void:
+        add_to_group("player")
         camera.current = true
 
         visual_feedback.name = "KaelVisualFeedback"
@@ -36,9 +39,23 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
         _apply_gravity(delta)
-        _handle_jump()
-        _handle_movement(delta)
+
+        if movement_enabled:
+                _handle_jump()
+                _handle_movement(delta)
+        else:
+                velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+                velocity.z = move_toward(velocity.z, 0.0, deceleration * delta)
+
         move_and_slide()
+
+
+func set_movement_enabled(enabled: bool) -> void:
+        movement_enabled = enabled
+
+        if not enabled:
+                velocity.x = 0.0
+                velocity.z = 0.0
 
 func _apply_gravity(delta: float) -> void:
         if not is_on_floor():
